@@ -2,13 +2,13 @@
 # Mobile01 爬蟲練習
 
 <font size=2>&emsp;&emsp;主要目的是以爬蟲程式抓取<a href="https://www.mobile01.com/forumtopic.php?c=20&p=1" title="mobile01相機討論區">mobile01相機討論區</a>所有文章列表並儲存檔案，並以csv檔案形式儲存(共20頁)，類別應包含 :
-1. 主題
-2. 回應數
-3. 作者名
-4. 作者發文時間
-5. 最新回應人名
-6. 最新回應時間
-7. 主題網頁路徑
+  1. 主題
+  2. 回應數
+  3. 作者名
+  4. 作者發文時間
+  5. 最新回應人名
+  6. 最新回應時間
+  7. 主題網頁路徑
 
 
 ## 觀察網頁
@@ -16,14 +16,9 @@
 <font size=2>&emsp;&emsp;觀察爬蟲的目標網頁，可以發現他的討論區頁面長的很像表格。因此，我第一個想法是去嘗試用表格存至DataFrame的方式，再去做資料整理。
 
 
-```python
-%%html
-<img src="img/webpage1.png",width=400,height=200>
-```
 
 
-<img src="img/webpage1.png",width=400,height=200>
-
+![Imgur](https://i.imgur.com/x5lIl7O.png)
 
 
 ```python
@@ -31,11 +26,10 @@ import pandas as pd
 from pyquery import PyQuery as pq
 import time
 import random
-%matplotlib inline
 
 url = "https://www.mobile01.com/forumtopic.php?c=20&p=1"
 df = pd.read_html(url)[0]
-df.head()
+print(df.head())
 ```
 
 
@@ -46,15 +40,14 @@ df.head()
     .dataframe thead tr:only-child th {
         text-align: right;
     }
-
     .dataframe thead th {
         text-align: left;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
 </style>
+
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -181,7 +174,7 @@ camera_info = {
 
 #5. 創造df格式去放camera_info
 camera_info_df = pd.DataFrame(camera_info)
-camera_info_df.head(3)
+print(camera_info_df.head(3))
 ```
 
 
@@ -192,11 +185,9 @@ camera_info_df.head(3)
     .dataframe thead tr:only-child th {
         text-align: right;
     }
-
     .dataframe thead th {
         text-align: left;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
@@ -296,9 +287,10 @@ for tag in html_doc(topic_css):
 ### 2. 多頁資料擷取
 
 <font size=2>&emsp;&emsp;現在已經完成一頁的網頁爬蟲，並把過程寫成"get_camera_info"的function。那麼如果要完整爬完Mobile01相機討論區，共20頁的內容，該怎麼做呢?
-<font size=2>&emsp;&emsp;&emsp;&emsp;a. 直接取得下一頁的網址
-<font size=2>&emsp;&emsp;&emsp;&emsp;b. 設定按下一頁的按鈕(必須使用Selenium的技巧)
-<font size=2>&emsp;&emsp;我們可以觀察到Mobile01討論區的網址有一個特性，就是會把頁碼擺在最後面，例如:「 https://www.mobile01.com/forumtopic.php?c=20&p=2 」這對於爬蟲的人來說是一大福音，因為可以簡單地替換最後一個數字，以取得其他分頁的網址，因此我會選擇a方案，利用迴圈變更頁數去擷取多頁的資料。
+  1. 直接取得下一頁的網址
+  2. 設定按下一頁的按鈕 => 必須使用Selenium的技巧
+    
+<font size=2>&emsp;&emsp;我們可以觀察到Mobile01討論區的網址有一個特性，就是會把頁碼擺在最後面，例如:「 https://www.mobile01.com/forumtopic.php?c=20&p=2 」這對於爬蟲的人來說是一大福音，因為可以簡單地替換最後一個數字，以取得其他分頁的網址，因此我會選擇方案，利用迴圈變更頁數去擷取多頁的資料。
 
 
 ```python
@@ -317,14 +309,14 @@ for i in range(2,21):
 ```
 
 <font size=2>&emsp;&emsp;在只爬1頁的時候，時間大概是1~2秒就可以完成，速度很快也很順利，但是當我要20頁一起執行時，我發現程式做道第4、5頁時就會卡住，不會有錯誤訊息，但是就是持續執行中跳不出來。這是怎麼回事呢?推測應該是被反爬蟲程式擋住了，市面上常見的反爬蟲方法分成以下幾種：
-<font size=2>&emsp;&emsp;&emsp;&emsp;a. 通過User-Agent來控制訪問，限制headers要是一般電腦
-<font size=2>&emsp;&emsp;&emsp;&emsp;b. 統計單位時間的request數量，進行連線剔除
-<font size=2>&emsp;&emsp;&emsp;&emsp;c. 固定IP短時間內大量爬蟲，進行IP封鎖
-<font size=2>&emsp;&emsp;&emsp;&emsp;d. 通過JS腳本來防止爬蟲(ex.驗證碼，滑動解鎖)
+  1. 通過User-Agent來控制訪問，限制headers要是一般電腦
+  2. 統計單位時間的request數量，進行連線剔除
+  3. 固定IP短時間內大量爬蟲，進行IP封鎖
+  4. 通過JS腳本來防止爬蟲(ex.驗證碼，滑動解鎖)
 
-<font size=2>&emsp;&emsp;接下來我就要來反反爬蟲了，首先目前先觀察mobile01的反爬蟲機制。當我的程式被卡住後，重新啟動再次執行還是可以取得前4~5頁後才被卡住，所以可以得知，對於我的爬蟲程式mobile01並沒有做IP封鎖的動作。因此，我決定先試試修改User-Agent與減慢爬蟲程式的執行速度，查看是否可以執行。
-<font size=2>&emsp;&emsp;a. User-Agent修改:我制定了一個長得像一般電腦的headers，並放入pyquery的變數中
-<font size=2>&emsp;&emsp;b. 減緩爬蟲速度:我利用time與random套件，寫出一個讓程式暫停執行的指令"time.sleep(random.randint(5,15))"，在每次下request完都讓爬蟲休息5~15秒不等的時間，也讓mobile01的server連線負擔可以不要太重。
+<font size=2>&emsp;&emsp;接下來我就要來反反爬蟲了，首先目前先觀察mobile01的反爬蟲機制。當我的程式被卡住後，重新啟動再次執行還是可以取得前4-5頁後才被卡住，所以可以得知，對於我的爬蟲程式mobile01並沒有做IP封鎖的動作。因此，我決定先試試修改User-Agent與減慢爬蟲程式的執行速度，查看是否可以執行。
+  1. User-Agent修改:我制定了一個長得像一般電腦的headers，並放入pyquery的變數中
+  2. 減緩爬蟲速度:我利用time與random套件，寫出一個讓程式暫停執行的指令"time.sleep(random.randint(5,15))"，在每次下request完都讓爬蟲休息5-15秒不等的時間，也讓mobile01的server連線負擔可以不要太重。
 
 
 ```python
@@ -355,14 +347,7 @@ time = datetime.now().strftime("%Y%m%d%H%M")
 camera_info_all.to_csv('mobile01_camera_'+ time +'.csv')
 ```
 
-
-```python
-%%html
-<img src="img/output_csv.png",width=400,height=150>
-```
-
-
-<img src="img/output_csv.png",width=400,height=150>
+![Imgur](https://i.imgur.com/iZywSSn.png)
 
 
 ### 4. 完整程式碼
