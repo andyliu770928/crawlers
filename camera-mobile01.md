@@ -174,7 +174,7 @@ camera_info = {
 
 #5. 創造df格式去放camera_info
 camera_info_df = pd.DataFrame(camera_info)
-print(camera_info_df.head(3))
+print(camera_info_df.head())
 ```
 
 
@@ -290,7 +290,7 @@ for tag in html_doc(topic_css):
   1. 直接取得下一頁的網址
   2. 設定按下一頁的按鈕 => 必須使用Selenium的技巧
     
-<font size=2>&emsp;&emsp;我們可以觀察到Mobile01討論區的網址有一個特性，就是會把頁碼擺在最後面，例如:「 https://www.mobile01.com/forumtopic.php?c=20&p=2 」這對於爬蟲的人來說是一大福音，因為可以簡單地替換最後一個數字，以取得其他分頁的網址，因此我會選擇方案，利用迴圈變更頁數去擷取多頁的資料。
+<font size=2>&emsp;&emsp;我們可以觀察到Mobile01討論區的網址有一個特性，就是會把頁碼擺在最後面，例如:「 https://www.mobile01.com/forumtopic.php?c=20&p=2 」這對於爬蟲的人來說是一大福音，因為可以簡單地替換最後一個數字，以取得其他分頁的網址，因此我會選擇方案1，利用迴圈變更頁數去擷取多頁的資料。
 
 
 ```python
