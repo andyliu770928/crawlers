@@ -15,13 +15,7 @@
 <font size=2>&emsp;&emsp;讓我們從愛奇藝先開始，首先觀察爬蟲的目標網頁，可以發現他是分頁式的網頁，而且頁碼會隨著跳至下一頁而改動，因此我們可以輕易地切換至下一分頁。
 
 
-```python
-%%html
-<img src="img/IQIYI.png",width=300,height=150>
-```
-
-
-<img src="img/IQIYI.png",width=300,height=150>
+![Imgur](https://i.imgur.com/QvDt65c.png)
 
 
 <font size=2>&emsp;&emsp;這次的爬重實作，我選用的是「Selenium」套件。簡單為大家科普一下，Selenium是為了測試瀏覽器而生的，但是沒想到在爬蟲的年代，它搖身一變，變成了爬蟲的好工具。Seleninm能控制你的瀏覽器，有模有樣地學人類”看”網頁。那麼你什麼時候會要用到Selenium 呢? 
@@ -67,7 +61,7 @@ for i in range(1,4):
 print(films_iqy)
 ```
 
-    ['多金社長小資女(Rich Man)', '韓劇精彩片段不間斷 第5輯', '漢摩拉比小姐', '想暫停的瞬間', '油膩的Melo', '無法律師', '情婦(獵豔情人)', '素描Sketch', '金裝律師', '訓南正音', '經常請吃飯的漂亮姐姐', 'Switch-改變世界', '我的大叔', '致忘了詩的你', '韓劇精彩片段不間斷 第4輯', '偉大的誘惑者', '那個男人吳秀', '小神的孩子們', '加油吧威基基', '超人媽咪袋鼠爸', '廣播羅曼史(Radio Romance)', 'Cross', 'MOTHER', '黑騎士', '操心', '疑問的一勝', '不是機器人啊', 'Jugglers', 'untouchable', '我的鬼神搭檔(Two Cops)', '理判事判(鋌而走險)', '韓劇精彩片段不間斷 第3輯', 'Melo Holic愛情中毒', '當你沉睡時(電視播出版)', '卞赫的愛情', '20世紀少男少女', '今生是第一次', '愛情的溫度', 'The Package', '付岩洞復仇者們', '當你沉睡時', '醫療船', '名不虛傳', '韓劇精彩片段不間斷 第2輯', 'Manhole', '犯罪心理：韓國', '救救我', '再次重逢的世界', '王在相愛', '有品位的她', '七日的王妃', '華政', '學校2017', '河伯的新娘', '我的野蠻公主', '奇怪的搭檔', '君主－假面的主人', '三流之路', '韓劇精彩片段不間斷', '芝加哥打字機', '焦急的羅曼史', '悄悄話', '隧道', '她愛上了我的謊', '自體發光辦公室', '師任堂', '大力女子都奉順', '明天和你', 'Voice', '內向的老闆', 'Missing9', '摩登農夫(搖滾情人)', '鬼怪', '藍色海洋的傳說', '浪漫醫生金師傅', '舉重妖精金福珠', '獄中花', '老婆這週要出牆(我配不上她)', '深夜食堂(韓國版)', '他們的Money', '警察夫人', '藍色海洋的傳說【導演版】', '拖旅行箱的女人', 'THE K2', '嫉妒的化身', '通往機場的路', 'The 88th Avenue', 'Doctors(電視播出版)', '獨酒男女', '灰姑娘與四騎士', '打架吧鬼神', 'Good Wife', '結婚契約', 'Doctors', '38師機動隊', 'Touching U', '母親', '吸血鬼檢察官2', '心心相印', '一起吃飯吧2', '吸血鬼偵探', '親愛的恩東', '我的秘密飯店', '不要戀愛要結婚', '壞傢伙們', '九數少年', '具海拉成功記(七顛八起具海拉)', '一起吃飯吧', '仁顯王后的男人', '太陽的後裔', '奔跑吧薔薇', '龍八夷', 'Kill Me Heal Me', '侍女們', '花美男拉麵店', '拜託小姐']
+    ['多金社長小資女(Rich Man)', '漢摩拉比小姐', '想暫停的瞬間', '油膩的Melo', '無法律師', '情婦(獵豔情人)', '素描Sketch', '金裝律師', '訓南正音', '經常請吃飯的漂亮姐姐', 'Switch-改變世界', '我的大叔', '致忘了詩的你', '偉大的誘惑者', '那個男人吳秀', '小神的孩子們', '加油吧威基基', '超人媽咪袋鼠爸', '廣播羅曼史(Radio Romance)', 'Cross', 'MOTHER', '黑騎士', '操心', '疑問的一勝', '不是機器人啊', 'Jugglers', 'untouchable', '我的鬼神搭檔(Two Cops)', '理判事判(鋌而走險)', 'Melo Holic愛情中毒', '當你沉睡時(電視播出版)', '卞赫的愛情', '20世紀少男少女', '今生是第一次', '愛情的溫度', 'The Package', '付岩洞復仇者們', '當你沉睡時', '醫療船', '名不虛傳', 'Manhole', '犯罪心理：韓國', '救救我', '再次重逢的世界', '王在相愛', '有品位的她', '七日的王妃', '華政', '學校2017', '河伯的新娘', '我的野蠻公主', '奇怪的搭檔', '君主－假面的主人', '三流之路', '芝加哥打字機', '焦急的羅曼史', '悄悄話', '隧道', '她愛上了我的謊', '自體發光辦公室', '師任堂', '大力女子都奉順', '明天和你', 'Voice', '內向的老闆', 'Missing9', '摩登農夫(搖滾情人)', '鬼怪', '藍色海洋的傳說', '浪漫醫生金師傅', '舉重妖精金福珠', '獄中花', '老婆這週要出牆(我配不上她)', '深夜食堂(韓國版)', '他們的Money', '警察夫人', '藍色海洋的傳說【導演版】', '拖旅行箱的女人', 'THE K2', '嫉妒的化身', '通往機場的路', 'The 88th Avenue', 'Doctors(電視播出版)', '獨酒男女', '灰姑娘與四騎士', '打架吧鬼神', 'Good Wife', '結婚契約', 'Doctors', '38師機動隊', 'Touching U', '母親', '吸血鬼檢察官2', '心心相印', '一起吃飯吧2', '吸血鬼偵探', '親愛的恩東', '我的秘密飯店', '不要戀愛要結婚', '壞傢伙們', '九數少年', '具海拉成功記(七顛八起具海拉)', '一起吃飯吧', '仁顯王后的男人', '太陽的後裔', '奔跑吧薔薇', '龍八夷', 'Kill Me Heal Me', '侍女們', '花美男拉麵店', '拜託小姐']
 
 
 
@@ -85,25 +79,16 @@ print(len(films_iqy))
 <font size=2>&emsp;&emsp;我一樣從網頁開始觀察，發現KKTV的網頁是動態的，將滑鼠滾輪往下滾，所看到的韓劇會愈來愈多，如下面兩張圖所示。因此，這次爬蟲必須增加滑鼠滾動的模擬動作，將滑鼠滾到網頁最底，再開始進行爬蟲。如此一來可以得到韓劇劇名列表，而KKTV的韓劇約有212部。
 
 
-```python
-%%html
-<img src="img/KKTV.png",width=300,height=150>
-```
 
+![Imgur](https://i.imgur.com/enNG19I.png)
 
-<img src="img/KKTV.png",width=300,height=150>
 
 
 <font size=2>&emsp;&emsp;原本只有20部韓劇(上圖所示)，滑鼠往下滾之後，後面又增加了(下圖所示)。
 
 
-```python
-%%html
-<img src="img/KKTV2.png",width=300,height=150>
-```
 
-
-<img src="img/KKTV2.png",width=300,height=150>
+![Imgur](https://i.imgur.com/Qv3VrFM.png)
 
 
 ### 2.2 Selenium實作
@@ -160,13 +145,8 @@ print(len(films_kk))
 <font size=2>&emsp;&emsp;LineTV的韓劇網頁，跟KKTV一樣，需要深探到最底下一層才能取得完整的韓劇名稱列表，而LineTV下方即有提供「察看更多」的按鈕，那麼就讓Selenium來模仿我按按鈕的動作吧~ 不過這次爬蟲面臨了另外的問題，那就是LineTV的韓劇每部都分拆成很多小集，而且其中還夾雜著預告片與MV，所以這邊需要將爬出來的劇名做「正則表達式」的篩選與過濾，之後再利用set的唯一性，將重複的名稱刪除，最後才能得到符合需求的劇名表單。執行結果，雖然LineTV的劇看起來數量很多，但是最後總結僅有11部。
 
 
-```python
-%%html
-<img src="img/LineTV.png",width=300,height=150>
-```
 
-
-<img src="img/LineTV.png",width=300,height=150>
+![Imgur](https://i.imgur.com/89T78un.png)
 
 
 ### 3.2 Selenium實作
@@ -229,13 +209,8 @@ print(list(set(films_line)))
 <font size=2>&emsp;&emsp;ChocoTV的韓劇網頁，一開始我們必須先解決升級廣到的部份，可以使用Selenium去找到叉叉的按鈕，將它關閉即可開始爬蟲，方法基本上跟LineTV一樣，不需要使用正則表達示去擷取劇名，最後總結有102部。
 
 
-```python
-%%html
-<img src="img/ChocoTV.png",width=300,height=102>
-```
 
-
-<img src="img/ChocoTV.png",width=300,height=102>
+![Imgur](https://i.imgur.com/N8GcrFX.png)
 
 
 ### 4.2 Selenium實作
@@ -310,13 +285,8 @@ len(films_ch)
 <font size=2>&emsp;&emsp;LiTV的韓劇網頁與LineTV相似，可使用網址列進行分頁的切換以取得完整的劇名列表，即可開始爬蟲。最後在LiTV取得128部劇名。
 
 
-```python
-%%html
-<img src="img/LiTV.png",width=300,height=150>
-```
 
-
-<img src="img/LiTV.png",width=300,height=150>
+![Imgur](https://i.imgur.com/c1Hwufz.png)
 
 
 ### 5.2 Selenium實作
@@ -427,11 +397,9 @@ result_all.sample(5)
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
@@ -500,7 +468,7 @@ result_all.sample(5)
 
 
 
-<font size=2>&emsp;&emsp;最後，我們將有空值的列資料刪除，留下這5個OTT平台共有的韓劇。如下表所示，僅有1部，這部韓劇是「操心」。
+<font size=2>&emsp;&emsp;最後，我們將有空值的列資料刪除，留下這5個OTT平台共有的韓劇。如下表所示，僅有1部，這部韓劇是「操心」。這部份爬蟲分析還有許多地方可以鑽研下去。技術上，可以對每個劇名進行更仔細的篩選，有可能同一部劇會有不同的翻譯名稱；分析上，則是可以分析每個OTT平台的選片策略，與該平台的使用者特性的比對。
 
 
 ```python
@@ -516,11 +484,9 @@ result_same
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
     .dataframe thead th {
         text-align: right;
     }
