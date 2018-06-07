@@ -15,7 +15,7 @@
 <font size=2>&emsp;&emsp;讓我們從愛奇藝先開始，首先觀察爬蟲的目標網頁，可以發現他是分頁式的網頁，而且頁碼會隨著跳至下一頁而改動，因此我們可以輕易地切換至下一分頁。
 
 
-![Imgur](https://i.imgur.com/QvDt65c.png)
+![Imgur](https://i.imgur.com/enNG19I.png)
 
 
 <font size=2>&emsp;&emsp;這次的爬重實作，我選用的是「Selenium」套件。簡單為大家科普一下，Selenium是為了測試瀏覽器而生的，但是沒想到在爬蟲的年代，它搖身一變，變成了爬蟲的好工具。Seleninm能控制你的瀏覽器，有模有樣地學人類”看”網頁。那麼你什麼時候會要用到Selenium 呢? 
@@ -79,8 +79,7 @@ print(len(films_iqy))
 <font size=2>&emsp;&emsp;我一樣從網頁開始觀察，發現KKTV的網頁是動態的，將滑鼠滾輪往下滾，所看到的韓劇會愈來愈多，如下面兩張圖所示。因此，這次爬蟲必須增加滑鼠滾動的模擬動作，將滑鼠滾到網頁最底，再開始進行爬蟲。如此一來可以得到韓劇劇名列表，而KKTV的韓劇約有212部。
 
 
-
-![Imgur](https://i.imgur.com/enNG19I.png)
+![Imgur](https://i.imgur.com/QvDt65c.png)
 
 
 
