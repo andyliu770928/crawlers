@@ -1,14 +1,29 @@
 
 # 線上影音平台 動態爬蟲練習
 
-<font size=2>&emsp;&emsp;主要目的是以爬蟲程式抓取線上影音平台，愛奇藝、KKTV、Line TV、Choco TV、LiTV等五大影音平台，對各平台所擁有的韓劇進行交叉比對，找出共同的韓劇。
+<font size=2>&emsp;&emsp;主要目的是以爬蟲程式抓取線上影音平台，愛奇藝、KKTV、Line TV、Choco TV、LiTV等五大影音平台，對各平台所擁有的韓劇進行交叉比對，找出共同的韓劇。以下為分析方法步驟，先觀察網頁，再進行Selenium實作，最後資料進行綜合比對。
 > + 愛奇藝韓劇     https://list.tw.iqiyi.com/www/2/17-------------4-1-1-iqiyi--.html
 > + KKTV 韓劇     https://www.kktv.me/collection/country/%E9%9F%93%E5%8A%87
 > + Line TV韓劇   https://tv.line.me/search?query=%E9%9F%93%E5%8A%87
 > + Choco TV韓劇  https://www.chocotv.com.tw/drama?area=kr
 > + LiTV韓劇      https://www.litv.tv/vod/drama/advanced_filter.do?f=f_countries%2C%E9%9F%93%E5%9C%8B&p=1
 
-## 1. 愛奇藝
+## 分析大綱
+
+[1. 愛奇藝](#1)
+
+[2. KKTV](#2)
+
+[3. Line TV](#3)
+
+[4. Choco TV](#4)
+
+[5. Li TV](#5)
+
+[6. 資料處理比對](#6)
+
+
+<h2 id="1">1. 愛奇藝</h2>
 
 ### 1.1 觀察網頁
 
@@ -71,8 +86,7 @@ print(len(films_iqy))
 
     116
 
-
-## 2. KKTV
+<h2 id="2">2. KKTV</h2>
 
 ### 2.1 觀察網頁
 
@@ -136,8 +150,7 @@ print(len(films_kk))
 
     212
 
-
-## 3. Line TV
+<h2 id="3">3. Line TV</h2>
 
 ### 3.1 觀察網頁
 
@@ -200,8 +213,7 @@ print(list(set(films_line)))
 
     ['火星生活', '訓南正音', '愛情的溫度', '操心', '想停止的瞬間', '黑騎士', '我的大叔', '巨匠線上真人 武法律師', '武法律師', '油膩的Melo', '致忘了詩的你', '你也是人類嗎']
 
-
-## 4. Choco TV
+<h2 id="4">4. Choco TV</h2>
 
 ### 4.1 觀察網頁
 
@@ -276,8 +288,7 @@ len(films_ch)
     102
 
 
-
-## 5. Li TV
+<h2 id="5">5. Li TV</h2>
 
 ### 5.1 觀察網頁
 
@@ -325,8 +336,7 @@ print(len(films_LI))
 
     128
 
-
-## 6. 資料處理比對
+<h2 id="6">6. 資料處理比對</h2>
 
 ### 6.1 資料處理
 
