@@ -10,8 +10,21 @@
   6. 最新回應時間
   7. 主題網頁路徑
 
+## 分析大綱
+[1. 觀察網頁](#1)
 
-## 觀察網頁
+[2. PyQuery實作](#2)
+
+> [2.1 單頁資料擷取](#2.1)
+
+> [2.2 多頁資料擷取](#2.2)
+
+[3. 檔案輸出](#3)
+
+[4. 完整程式碼](#4)
+
+
+<h2 id="1">1. 觀察網頁</h2>
 
 <font size=2>&emsp;&emsp;觀察爬蟲的目標網頁，可以發現他的討論區頁面長的很像表格。因此，我第一個想法是去嘗試用表格存至DataFrame的方式，再去做資料整理。
 
@@ -102,9 +115,9 @@ print(df.head())
 
 <font size=2>&emsp;&emsp;由上圖，可以看出使用read_html的方式，可以完整擷取網頁內容，但是主題後面的">> 234"，這種的分頁數字是我不想要的，如果要處理需要使用Reglaur Experssion的方式處理，問題變得比較複雜，因此我選擇使用PyQuery去做爬蟲處理。(若使用jupyter notebook做編譯，可能需先安裝PyQuery)
 
-## PyQuery實作
+<h2 id="2">2. PyQuery實作</h2>
 
-### 1. 單頁資料擷取
+<h3 id="2.1">2.1 單頁資料擷取</h3>
 
 <font size=2>&emsp;&emsp;首先，先試著完成第1頁，之後再處理20頁迴圈的部份。步驟如下:
 
@@ -283,8 +296,7 @@ for tag in html_doc(topic_css):
     else:
         topic.append(tag.text)
 ```
-
-### 2. 多頁資料擷取
+<h3 id="2.2">2.2 多頁資料擷取</h3>
 
 <font size=2>&emsp;&emsp;現在已經完成一頁的網頁爬蟲，並把過程寫成"get_camera_info"的function。那麼如果要完整爬完Mobile01相機討論區，共20頁的內容，該怎麼做呢?
   1. 直接取得下一頁的網址
@@ -334,7 +346,7 @@ time.sleep(random.randint(5,15))
 
 <font size=2>&emsp;&emsp;經由以上的修改後，我確實能完整得到20頁mobile01討論區的文章資料，總共有612筆與估算值相符，那麼最後一個步驟就是得輸出到CSV檔了。
 
-### 3. 檔案輸出
+<h2 id="3">3. 檔案輸出</h2>
 
 <font size=2>&emsp;&emsp;檔案輸出雖然看似簡單，但是名稱與版次管理在建立檔案時就必須去考慮，所以我考量討論區會持續有新文章出現，所以我在檔名的命名時，希望能增加時間戳記，以利未來資料分析時可以更有效率。這邊我引入datetime功能，它可叫出今天的年月日時分...等數據，並以此數據命名csv檔。
 
@@ -350,7 +362,7 @@ camera_info_all.to_csv('mobile01_camera_'+ time +'.csv')
 ![Imgur](https://i.imgur.com/iZywSSn.png)
 
 
-### 4. 完整程式碼
+<h2 id="4">4. 完整程式碼</h2>
 
 
 ```python
