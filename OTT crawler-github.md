@@ -1,7 +1,7 @@
 
 # 線上影音平台 動態爬蟲練習
 
-<font size=2>&emsp;&emsp;主要目的是以爬蟲程式抓取線上影音平台，愛奇藝、KKTV、Line TV、Choco TV、LiTV等五大影音平台，對各平台所擁有的韓劇進行交叉比對，找出共同的韓劇。以下為分析方法步驟，先觀察網頁，再進行Selenium實作，最後資料進行綜合比對。
+<font size=2>&emsp;&emsp;主要目的是以爬蟲程式抓取線上影音平台，愛奇藝、KKTV、Line TV、Choco TV、LiTV等五大影音平台，對各平台所擁有的韓劇進行交叉比對，找出共同的韓劇。以下分析步驟，皆先觀察網頁，再進行Selenium實作，最後將資料進行綜合比對。
 > + 愛奇藝韓劇     https://list.tw.iqiyi.com/www/2/17-------------4-1-1-iqiyi--.html
 > + KKTV 韓劇     https://www.kktv.me/collection/country/%E9%9F%93%E5%8A%87
 > + Line TV韓劇   https://tv.line.me/search?query=%E9%9F%93%E5%8A%87
